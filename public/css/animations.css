@@ -1,0 +1,145 @@
+/* ==========================================================
+   THE ARK AI - Animations
+   ========================================================== */
+
+/* ----- Animated logo (the Ark) ----- */
+.ark-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ark-logo svg { display: block; }
+
+.ark-logo.spin svg { animation: arkSpin 1.6s linear infinite; }
+.ark-logo.pulse svg { animation: arkPulse 1.4s ease-in-out infinite; }
+
+@keyframes arkSpin { to { transform: rotate(360deg); } }
+@keyframes arkPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(37,99,235,0)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 10px rgba(37,99,235,0.7)); }
+}
+
+/* Glow ring used while AI is thinking */
+.ark-logo.thinking {
+  position: relative;
+}
+.ark-logo.thinking::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--primary);
+  border-right-color: var(--primary-400);
+  animation: arkSpin 0.9s linear infinite;
+}
+
+/* ----- Thinking dots ----- */
+.thinking-dots {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 4px 0;
+}
+.thinking-dots span {
+  width: 9px; height: 9px;
+  background: var(--primary-400);
+  border-radius: 50%;
+  animation: dotBounce 1.2s infinite ease-in-out;
+}
+.thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* ----- Circular spinner ring on the assistant avatar while thinking ----- */
+/* A steady rotating ring (no popping/scaling). */
+.msg-avatar.thinking { position: relative; }
+.msg-avatar.thinking::after {
+  content: "";
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--primary-400);
+  border-right-color: var(--primary);
+  animation: arkSpin 0.75s linear infinite;
+  pointer-events: none;
+}
+
+/* ----- Animated "Thinking…" status word ----- */
+.thinking-status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--text-muted);
+}
+.thinking-status .word {
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--text-muted) 0%, var(--text) 25%, var(--primary-400) 50%, var(--text) 75%, var(--text-muted) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: shimmerText 1.8s linear infinite;
+}
+@keyframes shimmerText { to { background-position: -200% 0; } }
+.thinking-status .ell i {
+  opacity: 0; animation: ellipsis 1.2s infinite;
+}
+.thinking-status .ell i:nth-child(2) { animation-delay: 0.2s; }
+.thinking-status .ell i:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ellipsis { 0%,100%{opacity:0;} 40%{opacity:1;} }
+
+/* ----- "Thought for Xs" label ----- */
+.thought-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--text-muted);
+  margin-bottom: 6px; opacity: 0.9;
+}
+.thought-label svg { opacity: 0.8; }
+
+/* ----- Typing cursor ----- */
+.typing-cursor::after {
+  content: "▌";
+  color: var(--primary-400);
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ----- Fade / slide ins ----- */
+.fade-in { animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.slide-up { animation: slideUp 0.45s cubic-bezier(0.4,0,0.2,1); }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ----- Spinner ----- */
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: arkSpin 0.7s linear infinite;
+}
+
+/* ----- Spiral loader (for file uploads) ----- */
+.spiral-loader {
+  width: 26px; height: 26px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-top-color: var(--primary-400);
+  border-right-color: var(--primary);
+  border-radius: 50%;
+  animation: arkSpin 0.7s linear infinite;
+}
+.spiral-loader.sm { width: 20px; height: 20px; border-width: 2px; }
+
+/* ----- Loading bar ----- */
+.loading-bar {
+  height: 3px; width: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  background-size: 50% 100%;
+  animation: loadingSlide 1.2s infinite;
+}
+@keyframes loadingSlide {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}

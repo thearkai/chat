@@ -1,0 +1,37 @@
+rules_version = '2';
+
+// ==========================================================
+//  THE ARK AI - Firestore Security Rules
+//  Users can only read/write their own data.
+// ==========================================================
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // ---- Users ----
+    match /users/{uid} {
+      allow read, write: if isOwner(uid);
+    }
+
+    // ---- Chats ----
+    match /chats/{chatId} {
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow read, update, delete: if isSignedIn() && resource.data.uid == request.auth.uid;
+    }
+
+    // ---- Messages ----
+    // A message belongs to a chat owned by the user.
+    match /messages/{messageId} {
+      allow create: if isSignedIn()
+        && get(/databases/$(database)/documents/chats/$(request.resource.data.chatId)).data.uid == request.auth.uid;
+      allow read, delete: if isSignedIn()
+        && get(/databases/$(database)/documents/chats/$(resource.data.chatId)).data.uid == request.auth.uid;
+    }
+  }
+}

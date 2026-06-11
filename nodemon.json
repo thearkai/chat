@@ -1,0 +1,12 @@
+{
+  "watch": ["server", "public", ".env"],
+  "ext": "js,mjs,json,html,css,svg",
+  "ignore": [
+    "server/uploads/*",
+    "node_modules/*",
+    "public/js/vendor/*"
+  ],
+  "delay": "400",
+  "verbose": true,
+  "exec": "node server/server.js"
+}

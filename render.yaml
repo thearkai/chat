@@ -1,0 +1,64 @@
+# ==========================================================
+#  Render Blueprint for The Ark AI
+#  Deploy: push to GitHub, then in Render -> New -> Blueprint,
+#  pick this repo. Render reads this file. Fill secret values
+#  in the dashboard (they are marked sync: false).
+# ==========================================================
+services:
+  - type: web
+    name: the-ark-ai
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      # ---- AI provider ----
+      - key: AI_PROVIDER
+        value: openrouter
+      - key: OPENROUTER_MODEL
+        value: openai/gpt-oss-120b:free
+      - key: OPENROUTER_BASE_URL
+        value: https://openrouter.ai/api/v1
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: AI_TIMEOUT_MS
+        value: "60000"
+
+      # ---- Firebase Web (public client keys) ----
+      - key: FIREBASE_API_KEY
+        sync: false
+      - key: FIREBASE_AUTH_DOMAIN
+        sync: false
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: FIREBASE_STORAGE_BUCKET
+        sync: false
+      - key: FIREBASE_MESSAGING_SENDER_ID
+        sync: false
+      - key: FIREBASE_APP_ID
+        sync: false
+
+      # ---- Firebase Admin (server) ----
+      - key: FIREBASE_CLIENT_EMAIL
+        sync: false
+      - key: FIREBASE_PRIVATE_KEY
+        sync: false
+
+      # ---- Cloudinary (persistent media) ----
+      - key: USE_CLOUDINARY
+        value: "true"
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+      # ---- CORS / origin (set to your Render URL after first deploy) ----
+      - key: CLIENT_ORIGIN
+        sync: false

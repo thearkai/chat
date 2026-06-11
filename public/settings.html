@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Settings • The Ark AI</title>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/theme.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+  <script type="module" src="/js/theme.js"></script>
+</head>
+<body>
+  <div class="settings-top">
+    <button class="icon-btn" id="backBtn" title="Back to chat" aria-label="Back to chat">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    </button>
+    <span class="ark-logo pulse" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+        <rect x="4" y="4" width="56" height="56" rx="16" fill="#0F172A" stroke="#2563EB" stroke-width="2"/>
+        <path d="M32 14 L46 46 H39 L32 28 L25 46 H18 Z" fill="#60A5FA"/>
+      </svg>
+    </span>
+    <strong>Settings</strong>
+    <span style="flex:1"></span>
+    <button class="icon-btn theme-toggle" data-theme-toggle title="Toggle light / dark theme" aria-label="Toggle light or dark theme">
+      <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+
+  <div class="settings-page">
+    <p id="guestNote" class="hidden text-muted" style="margin-bottom:18px;">
+      Firebase is not configured on this server, so account settings are unavailable. You can still use The Ark AI as a guest.
+    </p>
+
+    <!-- Profile card -->
+    <div class="settings-section">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+        <span class="avatar" id="settingsAvatar" style="width:54px;height:54px;font-size:20px;">U</span>
+        <div>
+          <h3 id="settingsName">User</h3>
+          <span class="desc" style="margin:0;">Manage your profile information.</span>
+        </div>
+      </div>
+
+      <form id="profileForm">
+        <div class="form-group">
+          <label for="usernameField">Username</label>
+          <input type="text" id="usernameField" />
+        </div>
+        <div class="form-group">
+          <label for="emailField">Email (read-only)</label>
+          <input type="email" id="emailField" disabled />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="genderField">Gender</label>
+            <select id="genderField">
+              <option value="">Select…</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="prefer-not">Prefer not to say</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dobField">Date of Birth</label>
+            <input type="date" id="dobField" />
+          </div>
+        </div>
+        <button type="submit" class="btn">Save Changes</button>
+      </form>
+    </div>
+
+    <!-- Appearance -->
+    <div class="settings-section">
+      <h3>Appearance</h3>
+      <p class="desc">Choose how The Ark AI looks. Your choice is remembered on this device.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-ghost" data-set-theme="light">☀️ Light</button>
+        <button class="btn btn-ghost" data-set-theme="dark">🌙 Dark</button>
+      </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="settings-section">
+      <h3>About</h3>
+      <p class="desc">The Ark AI — an AI-powered learning assistant for students, researchers and curious minds. Built with Node.js, Express, Firebase and Google Gemini.</p>
+      <ul style="color:var(--text-muted);line-height:1.9;margin-left:18px;">
+        <li>💬 Conversational AI with streaming responses</li>
+        <li>🎤 Voice input & read-aloud</li>
+        <li>📎 File analysis (PDF, TXT, HTML, images, video)</li>
+        <li>📤 Export chats to PDF, TXT & HTML</li>
+      </ul>
+    </div>
+
+    <div class="settings-section">
+      <h3>Account</h3>
+      <p class="desc">Sign out of your account on this device.</p>
+      <button class="btn btn-ghost" id="logoutBtn2">🚪 Logout</button>
+    </div>
+  </div>
+
+  <script type="module" src="/js/settings.js"></script>
+  <script src="/js/livereload.js"></script>
+</body>
+</html>

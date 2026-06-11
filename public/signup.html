@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Create Account • The Ark AI</title>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/theme.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+  <script type="module" src="/js/theme.js"></script>
+</head>
+<body>
+  <div class="auth-wrap" id="authWrap" data-dismiss-to="/">
+    <div class="auth-card slide-up" id="authCard" role="dialog" aria-modal="true" aria-label="Create account">
+      <a class="auth-close" href="/" title="Close" aria-label="Close and continue as guest">×</a>
+      <div class="auth-brand">
+        <span class="ark-logo pulse">
+          <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+            <rect x="4" y="4" width="56" height="56" rx="16" fill="#0F172A" stroke="#2563EB" stroke-width="2"/>
+            <path d="M32 14 L46 46 H39 L32 28 L25 46 H18 Z" fill="#60A5FA"/>
+            <circle cx="32" cy="40" r="3.2" fill="#F8FAFC"/>
+          </svg>
+        </span>
+        <h1>The Ark AI</h1>
+      </div>
+
+      <h2>Create your account</h2>
+      <p class="sub">Join to save your chats and unlock all features.</p>
+
+      <p id="authNote" class="hidden text-muted" style="font-size:13px;margin-bottom:14px;"></p>
+
+      <form id="signupForm" novalidate>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="e.g. ada_lovelace" autocomplete="username" />
+          <div class="input-error" id="usernameError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+          <div class="input-error" id="emailError"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-wrap">
+              <input type="password" id="password" name="password" placeholder="Min 6 chars" autocomplete="new-password" />
+              <button type="button" class="toggle" aria-label="Show password">👁</button>
+            </div>
+            <div class="input-error" id="passwordError"></div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm</label>
+            <div class="password-wrap">
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" autocomplete="new-password" />
+              <button type="button" class="toggle" aria-label="Show password">👁</button>
+            </div>
+            <div class="input-error" id="confirmError"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+              <option value="">Select…</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="prefer-not">Prefer not to say</option>
+            </select>
+            <div class="input-error" id="genderError"></div>
+          </div>
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" />
+            <div class="input-error" id="dobError"></div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-block">Create Account</button>
+      </form>
+
+      <div class="divider">or</div>
+
+      <button class="google-btn" id="googleBtn">
+        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.6 2.4 30.2 0 24 0 14.6 0 6.4 5.4 2.5 13.3l7.9 6.1C12.3 13.2 17.6 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.1 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-17z"/><path fill="#FBBC05" d="M10.4 28.6c-.5-1.5-.8-3-.8-4.6s.3-3.1.8-4.6l-7.9-6.1C.9 16.5 0 20.1 0 24s.9 7.5 2.5 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.1-5.5c-2 1.3-4.6 2.1-8.1 2.1-6.4 0-11.7-3.7-13.6-9l-7.9 6.1C6.4 42.6 14.6 48 24 48z"/></svg>
+        Continue with Google
+      </button>
+
+      <p class="auth-foot">Already have an account? <a href="/login">Login</a></p>
+      <p class="auth-foot"><a href="/">Continue as guest →</a></p>
+    </div>
+  </div>
+
+  <script type="module" src="/js/auth.js"></script>
+  <script src="/js/livereload.js"></script>
+</body>
+</html>

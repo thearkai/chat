@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+# (package-lock.json IS committed for reproducible installs on the host)
+
+# Environment & secrets
+.env
+*.pem
+serviceAccountKey.json
+**/serviceAccountKey.json
+*-firebase-adminsdk-*.json
+
+# Uploads (keep folder, ignore content)
+server/uploads/*
+!server/uploads/.gitkeep
+server/uploads/generated/*
+!server/uploads/generated/.gitkeep
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
