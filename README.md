@@ -4,7 +4,7 @@
 
 **The Ark AI** is a production-ready, ChatGPT-inspired AI assistant built for **students, researchers, and curious learners**. It provides conversational AI, voice interaction, file analysis, content generation, and intelligent learning assistance — powered by **Google Gemini**.
 
-> Designed to be clean, scalable, modular, and perfect for a **secondary-school science-fair demonstration** — yet robust enough for real deployment.
+> Designed to be clean, scalable, modular, and perfect for a **secondary-school science-fair demonstration** — yet robust enough for real deployment. By : SYSON ACTIN
 
 ---
 
